@@ -96,7 +96,7 @@ Untuk menjaga kerapian dan kualitas kode, seluruh anggota tim diwajibkan mengiku
 
 - **1. Core Architect (Rifki Yuliandra - 2311532011)**
   (Bertanggung jawab atas UI Utama & Data Pipeline otomatis dari Kaggle)
-- **2. Logic & Visualization Engineer (Sherly Sukmadira Putri - 2311532036)**
+- **2. Logic & Visualization Engineer (Sherly Sukmadira Putri - 2311532015)**
   (Bertanggung jawab membangun grafik interaktif dan logika filtering data)
-- **3. Interactive Form Developer (Muhammad Hafiz - 2311532047)**
+- **3. Interactive Form Developer (Muhammad Hafiz - 2311532007)**
   (Bertanggung jawab membuat formulir input dan logika matematika di kalkulator simulasi)
