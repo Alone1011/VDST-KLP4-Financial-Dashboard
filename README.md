@@ -24,12 +24,12 @@ Proyek ini menggunakan teknologi dan _library_ berikut:
 
 ## ✨ Fitur Utama
 
-Aplikasi ini dibagi menjadi 3 halaman utama yang mudah dinavigasi:
+Aplikasi ini memiliki halaman utama dan beberapa halaman fitur khusus di *sidebar*:
 
-- 📊 **Data Overview**
-  Menampilkan ringkasan dataset yang berhasil dimuat, seperti total baris, jumlah kolom, dan cuplikan data (_dataframe_) mentah. Halaman ini berguna untuk memastikan data telah terunduh dengan benar sebelum dianalisis.
+- 🏠 **Halaman Utama (Data Overview)**
+  Menampilkan sambutan (*hero section*), informasi pengembang, dan ringkasan dataset yang dimuat (total baris, jumlah kolom, rentang waktu, dan cuplikan data mentah). Halaman ini merupakan *entry point* dari aplikasi.
 - 📈 **Interactive Visualization**
-  Halaman inti tempat pengguna dapat memfilter rentang waktu dan melihat pergerakan harga saham melalui grafik interaktif (seperti _candlestick_ atau grafik garis). Pengguna dapat melihat tren dengan mudah tanpa perlu memahami banyak istilah teknis.
+  Halaman tempat pengguna dapat memfilter rentang waktu dan melihat pergerakan harga saham melalui grafik interaktif (seperti _candlestick_ atau grafik garis). Pengguna dapat melihat tren dengan mudah tanpa perlu memahami banyak istilah teknis.
 - 🧮 **Target Calculator**
   Sebuah kalkulator sederhana yang memungkinkan pengguna melakukan simulasi. Dengan memasukkan harga beli dan persentase target keuntungan atau batasan kerugian (_stop-loss_), pengguna bisa langsung melihat estimasi angka yang perlu mereka pantau.
 
@@ -37,13 +37,12 @@ Aplikasi ini dibagi menjadi 3 halaman utama yang mudah dinavigasi:
 
 ```text
 streamlit-dashboard/
-├── app.py                     # Main file / Landing page aplikasi
+├── app.py                     # Main file & Data Overview (Landing Page)
 ├── requirements.txt           # Daftar library yang dibutuhkan
 ├── data/                      # Folder (opsional) untuk cache atau data lokal
 ├── utils/
-│   └── loader.py              # Logic pipeline untuk mengunduh dan membaca data dari Kagglehub
+│   └── loader.py              # Logic pipeline untuk mengunduh data dari Kagglehub
 └── pages/
-    ├── 1_Overview.py          # Halaman ringkasan data dan metrik
     ├── 2_Visualisasi.py       # Halaman grafik interaktif Plotly
     └── 3_Kalkulator.py        # Halaman form interaktif kalkulator simulasi
 ```
