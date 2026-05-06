@@ -30,8 +30,8 @@ def main():
     st.markdown("""
     ### 🧑‍💻 Tim Pengembang
     - **1. Core Architect** (Rifki Yuliandra - 2311532011)
-    - **2. Logic & Visualization Engineer** (Sherly Sukmadira Putri - 2311532036)
-    - **3. Interactive Form Developer** (Muhammad Hafiz - 2311532047)
+    - **2. Logic & Visualization Engineer** (Sherly Sukmadira Putri - 2311532015)
+    - **3. Interactive Form Developer** (Muhammad Hafiz - 2311532007)
     """)
     
     st.info("👈 Silakan mengeksplorasi fitur grafik dan kalkulator di sidebar sebelah kiri.")
