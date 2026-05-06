@@ -1,28 +1,70 @@
 import streamlit as st
+import pandas as pd
+from utils.loader import load_data
 
-# Konfigurasi halaman wajib di baris pertama
+# Konfigurasi Awal
 st.set_page_config(page_title="IHSG Dashboard", page_icon="📈", layout="wide")
 
 def main():
-    st.title("📈 Financial & Equity Dashboard (IHSG Edition)")
-    
-    st.info("Aplikasi ini menggunakan dataset historis Indeks Harga Saham Gabungan (IHSG) yang diambil secara otomatis dari Kaggle.")
+    # === SIDEBAR MODERN ===
+    with st.sidebar:
+        
+        st.success("💡 **Tip:** Aktifkan *Dark Theme* di menu pengaturan (ujung kanan atas) agar visual grafik lebih elegan dan modern.")
+        
+        st.markdown("---")
+        st.caption("👨‍💻 **Tim Pengembang (VDST Kelompok 4):**")
+        st.markdown("""
+        - **Rifki Y.** *(Core Architect)*
+        - **Sherly S.** *(Logic & Viz)*
+        - **M. Hafiz** *(Form Developer)*
+        """)
+        
+        st.markdown("---")
+        st.markdown("<div style='text-align: center; font-size: 12px; color: gray;'>v1.0.0 | Data by Kagglehub</div>", unsafe_allow_html=True)
+    # =======================
+
+    # Bagian 1: Hero Section (Welcome)
+    st.title("🚀 Financial & Equity Dashboard")
+    st.write("Aplikasi ini memvisualisasikan data historis Indeks Harga Saham Gabungan (IHSG) yang diambil secara otomatis dari Kaggle.")
     
     st.markdown("""
-    ### 🌟 Tentang Aplikasi
-    Dashboard ini adalah aplikasi visualisasi data time-series yang dibangun menggunakan Streamlit. 
-    Aplikasi ini secara otomatis mengambil dataset IHSG terbaru menggunakan `kagglehub`, memvisualisasikannya, dan menyediakan kalkulator sederhana untuk simulasi target.
-    
-    ---
-    
-    ### 🧑‍💻 Struktur Tim 
-    - **1. Core Architect (UI & Data Pipeline)**
-      *Fokus pada App Setup, otomatisasi data dari Kaggle, dan menampilkan ringkasan data.*
-    - **2. Logic & Visualization Engineer**
-      *Fokus merancang grafik interaktif (candlestick/line chart) dan filter data.*
-    - **3. Interactive Form Developer**
-      *Fokus membangun formulir kalkulator simulasi dengan logika matematika dasar.*
+    ### 🧑‍💻 Tim Pengembang
+    - **1. Core Architect** (Rifki Yuliandra - 2311532011)
+    - **2. Logic & Visualization Engineer** (Sherly Sukmadira Putri - 2311532036)
+    - **3. Interactive Form Developer** (Muhammad Hafiz - 2311532047)
     """)
+    
+    st.info("👈 Silakan mengeksplorasi fitur grafik dan kalkulator di sidebar sebelah kiri.")
+    
+    # Bagian 2: Data Overview
+    st.markdown("---")
+    st.subheader("📊 Ringkasan Dataset IHSG")
+    
+    with st.spinner("Memuat data dari Kaggle..."):
+        df = load_data()
+        
+    if not df.empty:
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric(label="Total Baris Data", value=f"{df.shape[0]:,}")
+            
+        with col2:
+            st.metric(label="Total Kolom", value=f"{df.shape[1]}")
+            
+        with col3:
+            if 'Date' in df.columns:
+                min_date = str(df['Date'].min())[:10]
+                max_date = str(df['Date'].max())[:10]
+                st.metric(label="Rentang Waktu", value=f"{min_date} / {max_date}")
+            else:
+                st.metric(label="Status Data", value="Tersedia")
+                
+        st.write("**Cuplikan Tabel Data Mentah (100 Baris Pertama):**")
+        st.dataframe(df.head(100), use_container_width=True)
+        
+    else:
+        st.error("Data tidak tersedia atau gagal dimuat dari Kaggle.")
 
 if __name__ == "__main__":
     main()
